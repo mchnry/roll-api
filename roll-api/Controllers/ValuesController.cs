@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace roll_api.Controllers
@@ -10,11 +11,19 @@ namespace roll_api.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        public IHostingEnvironment Env { get; }
+
+        public ValuesController(IHostingEnvironment env)
+        {
+            this.Env = env;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            
+            return new string[] { Env.EnvironmentName, "value2" };
         }
 
         // GET api/values/5
