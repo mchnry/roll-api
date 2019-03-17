@@ -22,7 +22,7 @@ namespace roll_api.Infrastructure.Security
       
         }
 
-        public async Task InvokeAsync(HttpContext context, JWTConfiguration jwtConfig, IRSAKeyProvider keyProv, ClientHelper clientHelper, JWTHelper jwtHelper, CancellationToken tkn)
+        public async Task InvokeAsync(HttpContext context, JWTConfiguration jwtConfig, IRSAKeyProvider keyProv, ClientHelper clientHelper, JWTHelper jwtHelper)
         {
             //pull jwt from header.... validate
             string bearerToken = context.Request.Headers.FirstOrDefault(g => g.Key.StartsWith("authorization", StringComparison.OrdinalIgnoreCase)).Value;
@@ -66,7 +66,7 @@ namespace roll_api.Infrastructure.Security
             } else
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("Unauthorized", tkn);
+                await context.Response.WriteAsync("Unauthorized");
             }
             
            

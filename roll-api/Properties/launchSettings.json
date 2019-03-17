@@ -33,11 +33,11 @@
     "IIS": {
       "commandName": "IIS",
       "launchBrowser": true,
-      "launchUrl": "api/values",
-      "ancmHostingModel": "InProcess",
+      "launchUrl": "auth/xy123f",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "ancmHostingModel": "InProcess"
     }
   }
 }

@@ -57,8 +57,12 @@ namespace roll_api
                 app.UseHsts();
             }
 
+            app.UseWhen(context => context.Request.Path.StartsWithSegments("/api"), appBuilder =>
+            {
+                appBuilder.UseJWT();
+            });
 
-            app.UseJWT();
+            //app.UseJWT();
             app.UseHttpsRedirection();
             app.UseMvc();
         }
